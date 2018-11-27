@@ -1,3 +1,5 @@
 from django.contrib import admin
+from map_app.models import Komuna, Vendi
 
-# Register your models here.
+admin.site.register(Komuna)
+admin.site.register(Vendi)
