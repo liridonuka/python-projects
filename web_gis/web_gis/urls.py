@@ -21,5 +21,6 @@ from map_app import views
 urlpatterns = [
     path('',views.index, name='Home'),
     path('generalmap/',include('map_app.urls')),
+    path('webform/',include('web_form.urls')),
     path('admin/', admin.site.urls),
 ]
