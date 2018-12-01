@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from . import forms
+from web_form.models import Contact
 
 
 def index(request):
-    result = {'insert_me': "Please go to 'add/' and fill the form"}
-    return render(request,'web_form/index.html',context=result)
+    result = Contact.objects.order_by('name')
+    contact_dict = {'contacts': result}
+    return render(request,'web_form/index.html',context=contact_dict)
 
 def add_records(request):
     form = forms.AddValues()
@@ -13,9 +15,9 @@ def add_records(request):
         form = forms.AddValues(request.POST)
 
         if form.is_valid():
-            print("Validation Success!")
-            print("Name: "+form.cleaned_data['name'])
-            print("Email: "+form.cleaned_data['email'])
-            print("Text: "+form.cleaned_data['text'])
+            form.save(commit=True)
+            return index(request)
+        else:
+            print('Duplicate values or Erros')
 
     return render(request,'web_form/add.html',{'form':form})

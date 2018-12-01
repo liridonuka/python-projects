@@ -2,15 +2,34 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Register HomePage</title>
+    <title>Contact HomePage</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
     <div class="container">
-      <div class="jumbotron">
-        <h1>This is register web form</h1>
-          <h2>{{insert_me}}</h2>
+      <div class="table-responsive">
+        <h1>This is contact table</h1>
+          {% if contacts %}
+            <table class="table">
+              <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Text</th>
+              </thead>
+            {% for item in contacts %}
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email}}</td>
+              <td>{{ item.text}}</td>
+            </tr>
+            {% endfor%}
+            </table>
+          {% else %}
+            <p>Problem while showing the table</p>
+          {% endif%}
       </div>
+      <a href="{% url 'Add records'%}"> Add contacts</a>
+
     </div>
 
   </body>
