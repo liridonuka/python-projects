@@ -1,30 +1,23 @@
 <!DOCTYPE html>
-{% load staticfiles %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Komunat</title>
-    <link rel="stylesheet" href="{% static "custom_style/mystyle.css" %}">
-  </head>
-  <body>
-    <h1>Me poshte po paraqesim komunat</h1>
-    <div class="djangotwo">
-      {% if komuna_records %}
-        <table>
-          <thead>
-            <th>Id</th>
-            <th>Komuna</th>
-          </thead>
-        {% for item in komuna_records %}
-            <tr>
-              <td>{{ item.id_komuna }}</td>
-              <td>{{ item.emri_komuna}}</td>
-            </tr>
-         {% endfor %}
-        </table>
-      {% else %}
-        <p>Nuk u gjeten shenime te komunes</p>
-      {% endif %}
-    </div>
-  </body>
-</html>
+{% extends "map_app/base.html" %}
+  {% block body_block %}
+      <h1>Me poshte po paraqesim komunat</h1>
+      <div class="table">
+        {% if komuna_records %}
+          <table class="table">
+            <thead>
+              <th>Id</th>
+              <th>Komuna</th>
+            </thead>
+          {% for item in komuna_records %}
+              <tr>
+                <td>{{ item.id_komuna }}</td>
+                <td>{{ item.emri_komuna}}</td>
+              </tr>
+           {% endfor %}
+          </table>
+        {% else %}
+          <p>Nuk u gjeten shenime te komunes</p>
+        {% endif %}
+      </div>
+      {% endblock %}

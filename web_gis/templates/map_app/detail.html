@@ -1,15 +1,8 @@
 <!DOCTYPE html>
-{%load staticfiles%}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Detail page</title>
-    <link rel="stylesheet" href="{% static "custom_style/mystyle.css" %}">
-  </head>
-  <body>
+{% extends "map_app/base.html"%}
+  {% block body_block %}
+    {% load staticfiles %}
     <h1>This is picture of me!</h1>
     <p>{{insert_detail}}</p>
-
     <img src="{% static "images/IMG_9611.JPG" %}" height="475" width="316" alt="Problem while showing the image">
-  </body>
-</html>
+  {% endblock %}

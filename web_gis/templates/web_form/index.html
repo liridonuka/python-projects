@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Contact HomePage</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div class="container">
+{% extends "map_app/base.html"%}
+  {% block body_block %}
       <div class="table-responsive">
         <h1>This is contact table</h1>
+        <div class="">
+          <a class="btn btn-primary" href="{% url 'web_form:add_contact' %}">Add contact</a>
+        </div>
           {% if contacts %}
             <table class="table">
               <thead>
@@ -28,9 +25,4 @@
             <p>Problem while showing the table</p>
           {% endif%}
       </div>
-      <a href="{% url 'Add records'%}"> Add contacts</a>
-
-    </div>
-
-  </body>
-</html>
+    {% endblock %}

@@ -2,7 +2,9 @@
 from django.urls import path
 from map_app import views
 
+app_name = 'map_app'
+
 urlpatterns = [
-    path('',views.index, name='mapapp'),
-    path('<int:question_id>/',views.detail, name='detail'),
+    path('',views.index, name='index'),
+    path('<int:question_id>/',views.detail, name='details'),
 ]

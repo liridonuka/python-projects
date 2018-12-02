@@ -1,11 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Add form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  </head>
-  <body>
+{% extends "map_app/base.html" %}
+  {% block body_block %}
     <h1>Add some data here </h1>
     <div class="container">
 
@@ -13,8 +8,7 @@
           {{form.as_p}}
           {% csrf_token %}
           <input type="submit" class="btn btn-primary" value="Submit">
+          <a href="{% url 'web_form:contacts'%}">go back</a>
         </form>
-
     </div>
-  </body>
-</html>
+  {% endblock %}
