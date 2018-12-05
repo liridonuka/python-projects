@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load leaflet_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcom</title>
+    <link rel="stylesheet" href="/static/my_style/map.css">
+    {% leaflet_js %}
+    {% leaflet_css %}
+    {% leaflet_js  plugins="bouncemarker,draw" %}
+    {% leaflet_css plugins="bouncemarker,draw" %}
+  </head>
+  <body>
+    <h1>Enjoy my city</h1>
+      {% leaflet_map "yourmap" %}
+  </body>
+</html>
