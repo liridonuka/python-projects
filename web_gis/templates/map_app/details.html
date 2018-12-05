@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends "map_app/base.html" %}
+  {% block body_block %}
+    {% if komuna_details %}
+      <h1> {{ komuna_details.id_komuna }}</h1>
+      <h2> {{ komuna_details.emri_komuna }}</h2>
+    {% else %}
+      <p>No data found!</p>
+    {% endif %}
+    <a href="{% url 'map_app:index'%}">go back</a>
+  {% endblock %}

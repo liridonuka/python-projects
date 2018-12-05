@@ -12,7 +12,7 @@
           {% for item in komuna_records %}
               <tr>
                 <td>{{ item.id_komuna }}</td>
-                <td>{{ item.emri_komuna}}</td>
+                <td><a href="{{ item.id_komuna }}">{{ item.emri_komuna }}</a></td>
               </tr>
            {% endfor %}
           </table>
