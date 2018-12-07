@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'map_app',
     'web_form',
+    'org_app',
 ]
 
 MIDDLEWARE = [

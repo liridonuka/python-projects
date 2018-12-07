@@ -22,5 +22,6 @@ urlpatterns = [
     path('',views.index, name='Home'),
     path('generalmap/',include('map_app.urls')),
     path('contacts/',include('web_form.urls')),
+    path('organogram/',include('org_app.urls',namespace='org_app')),
     path('admin/', admin.site.urls),
 ]

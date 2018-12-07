@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir=ç"ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+         <ul class="nav navbar-nav">
+           <li><a class="navbar-brand" href="{% url 'org_app:list'%}">Department</a></li>
+           <!-- <li><a class="navbar-link" href="{% url 'web_form:contacts'%}">Division</a></li> -->
+           <li><a class="navbar-link" href="{% url 'admin:index'%}">Admin</a></li>
+         </ul>
+        </nav>
+
+        <div class="container">
+          {% block body_block%}
+          <!-- inside of this is inherited -->
+          {% endblock%}
+
+        </div>
+  </body>
+</html>
