@@ -12,4 +12,8 @@
   <p>{{division.name}}, chief division is {{division.chief_division}}</p>
   {% endfor %}
 </div>
+
+<div class="container">
+  <a class="btn btn-warning" href="{% url 'org_app:update' pk=department_detail.pk %}">Update</a>
+</div>
 {% endblock %}

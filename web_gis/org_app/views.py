@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import View, TemplateView,ListView,DetailView
+from django.urls import reverse_lazy
+from django.views.generic import (View, TemplateView,ListView,DetailView,
+                                CreateView, DeleteView, UpdateView)
 from . import models
 
 # # Create your views here.
@@ -14,3 +16,14 @@ class DepartmentDetailView(DetailView):
     context_object_name = 'department_detail'
     model = models.Department
     #template_name = 'org_app/department_detail.html'
+class DepartmentCreateView(CreateView):
+    fields = ('name','director')
+    model = models.Department
+
+class DepartmentUpdateView(UpdateView):
+    fields = ('__all__')
+    model = models.Department
+
+class DepartmentDeleteView(DeleteView):
+    model = models.Department
+    success_url = reverse_lazy('org_app:list')
