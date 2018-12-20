@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load leaflet_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>City Map</title>
+    <link rel="stylesheet" href="/static/my_style/map.css">
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <script type="text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+  </head>
+  <body>
+    <h1>Prishtina</h1>
+      <script type="text/javascript">
+        function point_layer(map, options){
+
+          var religions = new L.GeoJSON.AJAX("{% url 'map:religion' %}",{
+            onEachFeature: function(feature,layer){
+              layer.bindPopup(feature.properties.name.toString());
+            }
+          });
+
+          var cityparks = new L.GeoJSON.AJAX("{% url 'map:city_park' %}",{
+            onEachFeature: function(feature,layer){
+              layer.bindPopup(feature.properties.name.toString());
+            }
+          });
+
+          religions.addTo(map);
+          cityparks.addTo(map);
+        }
+      </script>
+      {% leaflet_map "citymap" callback="window.point_layer" %}
+  </body>
+</html>
