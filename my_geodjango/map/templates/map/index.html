@@ -5,16 +5,21 @@
   <head>
     <meta charset="utf-8">
     <title>City Map</title>
-    <link rel="stylesheet" href="/static/my_style/map.css">
+    <!-- <link rel="stylesheet" href="/static/my_style/map.css"> -->
     {% leaflet_js %}
     {% leaflet_css %}
+
+    <link rel="stylesheet" href="{% static 'my_style/map.css' %}">
+    <link rel="stylesheet" href="{% static 'my_style/leaflet.groupedlayercontrol.css' %}">
     <script type="text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dist/leaflet.groupedlayercontrol.js' %}"></script>
+
   </head>
   <body>
     <h1>Prishtina</h1>
       <script type="text/javascript">
         function point_layer(map, options){
-
+          var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}{y}{x}.png');
           var religions = new L.GeoJSON.AJAX("{% url 'map:religion' %}",{
             onEachFeature: function(feature,layer){
               layer.bindPopup(feature.properties.name.toString());
@@ -29,6 +34,20 @@
 
           religions.addTo(map);
           cityparks.addTo(map);
+
+          var baseLayers = {
+            "OSM": osm
+          }
+
+          var groupedOverlays = {
+            "Layers": {
+              "religion": religions,
+              "city park": cityparks
+            }
+          };
+
+          L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
+
         }
       </script>
       {% leaflet_map "citymap" callback="window.point_layer" %}
