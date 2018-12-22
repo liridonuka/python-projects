@@ -10,3 +10,5 @@ class CityParkAdmin(LeafletGeoAdmin):
 
 admin.site.register(Religion,ReligionAdmin)
 admin.site.register(CityPark,CityParkAdmin)
+
+#just test repos
