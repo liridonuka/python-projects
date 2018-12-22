@@ -7,5 +7,6 @@ class ReligionAdmin(LeafletGeoAdmin):
     list_display = ('name', 'location')
 class CityParkAdmin(LeafletGeoAdmin):
     pass
+
 admin.site.register(Religion,ReligionAdmin)
 admin.site.register(CityPark,CityParkAdmin)
