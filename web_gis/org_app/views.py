@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import (View, TemplateView,ListView,DetailView,
                                 CreateView, DeleteView, UpdateView)
 from . import models
+from history_rec.mixes import ObjectViewedMix
 
 # # Create your views here.
 # class IndexView(TemplateView):
@@ -12,7 +13,7 @@ class DepartmentListView(ListView):
     context_object_name = 'departments'
     model =  models.Department
 
-class DepartmentDetailView(DetailView):
+class DepartmentDetailView(ObjectViewedMix,DetailView):
     context_object_name = 'department_detail'
     model = models.Department
     #template_name = 'org_app/department_detail.html'
@@ -20,7 +21,7 @@ class DepartmentCreateView(CreateView):
     fields = ('name','director')
     model = models.Department
 
-class DepartmentUpdateView(UpdateView):
+class DepartmentUpdateView(ObjectViewedMix, UpdateView):
     fields = ('__all__')
     model = models.Department
 

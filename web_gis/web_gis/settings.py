@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'map_app',
     'web_form',
     'org_app',
+    'history_rec',
 ]
 
 MIDDLEWARE = [

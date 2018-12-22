@@ -18,6 +18,6 @@ from django.urls import path, include
 from map import views
 
 urlpatterns = [
-    path('',views.index,name='index'),
+    path('',include('map.urls', namespace='map')),
     path('admin/', admin.site.urls),
 ]

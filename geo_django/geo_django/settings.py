@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'leaflet',
     'map',
+    'point',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+SERIALIZATION_MODULES = {
+    "geojson": "django.contrib.gis.serializers.geojson",
+ }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -132,5 +136,4 @@ LEAFLET_CONFIG = {
     'DEFAULT_ZOOM': 13,
     'MIN_ZOOM': 3,
     'MAX_ZOOM': 18,
-    
 }
