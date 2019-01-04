@@ -132,9 +132,11 @@ STATICFILES_DIRS = [
 ]
 
 LEAFLET_CONFIG = {
-    'SPATIAL_EXTENT': (21.28, 42.62, 21, 46),
-    'DEFAULT_CENTER': (21, 42),
-    'DEFAULT_ZOOM': 13,
+    # 'SPATIAL_EXTENT': (21.28, 42.62, 21, 46),
+    'DEFAULT_CENTER': (42.663509, 21.16629),
+    'DEFAULT_ZOOM': 12,
     'MIN_ZOOM': 3,
     'MAX_ZOOM': 18,
+    'TILES': 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    'SCALE': 'both',
 }

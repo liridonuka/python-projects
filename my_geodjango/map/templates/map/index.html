@@ -26,7 +26,15 @@
             }
           });
 
+          // var religions = new L.GeoJSON.AJAX("{% url 'map:religion' %}");
+
           var cityparks = new L.GeoJSON.AJAX("{% url 'map:city_park' %}",{
+            onEachFeature: function(feature,layer){
+              layer.bindPopup(feature.properties.name.toString());
+            }
+          });
+
+          var layers = new L.GeoJSON.AJAX("{% url 'map:layers' %}",{
             onEachFeature: function(feature,layer){
               layer.bindPopup(feature.properties.name.toString());
             }
@@ -34,6 +42,7 @@
 
           religions.addTo(map);
           cityparks.addTo(map);
+          layers.addTo(map);
 
           var baseLayers = {
             "OSM": osm
@@ -42,7 +51,8 @@
           var groupedOverlays = {
             "Layers": {
               "religion": religions,
-              "city park": cityparks
+              "city park": cityparks,
+              "layers": layers,
             }
           };
 

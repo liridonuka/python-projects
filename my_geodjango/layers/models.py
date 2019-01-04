@@ -18,3 +18,14 @@ class CityPark(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class AllLayers(models.Model):
+    name = models.CharField(unique=True, max_length=2090)
+    location = models.GeometryCollectionField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Layers'
